@@ -19,39 +19,40 @@
                     <small>Secondary Text</small>
                 </h1>
 
+                <?php 
+                    $query = "select * from posts";
+                    $allPost = mysqli_query($connection, $query);
+                    while ($post = mysqli_fetch_assoc($allPost)) {
+
+                        $title = $post['title'];
+                        $author = $post['author'];
+                        $createDate = $post['createDate'];
+                        $image = $post['image'];
+                        $content = $post['content'];
+                        $tag = $post['tag'];
+                        
+
+                   
+                 ?>
+
                 <!-- First Blog Post -->
                 <h2>
-                    <a href="#">Blog Post Title</a>
+                    <a href="#"><?php echo   $title?></a>
                 </h2>
                 <p class="lead">
-                    by <a href="index.php">Start Bootstrap</a>
+                    by <a href="index.php"><?php echo $author ?></a>
                 </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> <?php echo $createDate ?></p>
                 <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="<?php echo $image ?>" alt="">
                 <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
+                <p><?php echo $content ?></p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                <hr>
 
-                <!-- Second Blog Post -->
-                <h2>
-                    <a href="#">Blog Post Title</a>
-                </h2>
-                <p class="lead">
-                    by <a href="index.php">Start Bootstrap</a>
-                </p>
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:45 PM</p>
-                <hr>
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, quasi, fugiat, asperiores harum voluptatum tenetur a possimus nesciunt quod accusamus saepe tempora ipsam distinctio minima dolorum perferendis labore impedit voluptates!</p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                
 
-                <hr>
-
-
+            <?php   };?>
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
