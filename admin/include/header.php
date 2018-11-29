@@ -1,4 +1,9 @@
+<?php ob_start(); ?>
 <?php include "../include/db.php" ?>
+<?php 
+$display_updateDiv = "none";
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
