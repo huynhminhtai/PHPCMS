@@ -1,4 +1,13 @@
 <?php include "include/header.php"  ?>
+<?php include "include/getUpdateCate.php" ?>
+<?php include "include/categoryFunction.php" ?>
+<!-- delete -->
+<?php deleteCate(); ?>
+<!-- add new -->
+<?php addNewCate(); ?>
+<!-- update -->
+<?php updateCate(); ?>
+
 <body>
     <div id="wrapper">
 
@@ -17,29 +26,11 @@
                             <small>Add new</small>
                         </h1>
                         
-                        <?php 
-                        if(isset($_POST['addCatebtn'])){
-                           $categoryTitle = $_POST['cateTitletxt'];
-                           $query = "insert into categories(name) value ('{$categoryTitle}')";
-                           $result = mysqli_query($connection, $query);
-                           
-                       }
+                        
 
-                       ?>
+                       <!-- get update catefory -->
+                        <?php getUpdateCate(); ?>
 
-                       <!-- update -->
-                         <?php 
-                            if (isset($_GET['update'])) {
-                            $update_id = $_GET['update'];
-                            $get_update_cate_query = "select * from categories where id = $update_id";
-                            $update_Rows = mysqli_query($connection, $get_update_cate_query);
-                            $update_Row =  $update_Rows -> fetch_assoc();
-                            $display_updateDiv = "block";
-
-                            }
-                           
-
-                         ?>
                        <div class="col-xs-6">
                         <div class="addDiv">
                            <form action="categories.php" method="POST" >
@@ -54,12 +45,13 @@
                         <div class="updateDiv" style="display: <?php echo $display_updateDiv ?>" >
                            <form action="categories.php" method="POST" >
                               <div class="form-group">
+                            <input type="text" name="update_cate_id" value="<?php echo $update_id ?>" disable hidden>
                                  <input class="form-control" type="text" 
-                                 name="cateTitletxt" value="<?php  echo  $update_Row['name'] ?>" 
+                                 name="update_catename_txt" value="<?php  echo  $update_Row['name'] ?>" 
                                  required >
                              </div>
                              <div class="form-group">
-                                 <input class="btn btn-primary" type="submit" name="addCatebtn" value="Add Category">
+                                 <input class="btn btn-primary" type="submit" name="update_cate_btn" value="Update">
                              </div>
                          </form>
                         </div>
@@ -82,52 +74,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- delete -->
-                                <?php 
-                                if (isset($_GET['dele'])) {
-                                    $deleId = $_GET['dele'];
-                                    $delequery = "delete from categories where id = $deleId";  
-                                    $deleteEx = mysqli_query($connection, $delequery);
-                                    // if($deleteEx){
-                                    //     echo "<script type='text/javascript'>alert('ok!')</script>";
-                                    // }
-                                    header("Location: categories.php");
-                                }
-                                 ?>
+                                 <!-- load all update cate -->
+                                <?php include "include/loadAllCate.php" ?>
 
-
-                                <?php 
-                                $query = "select * from categories";
-                                $allCategories = mysqli_query($connection, $query);
-                                $count = 0;
-                                while ($row = mysqli_fetch_assoc($allCategories)) {
-                                    $count ++;
-                                    $categoryName = $row['name'];
-                                    $categoryId = $row['id'];
-                                    
-                               
-                                ?>
-                                <tr>
-                                    <td>
-                                        <?php echo  $count?>
-                                    </td>
-                                    <td>
-                                        <?php echo  $categoryName?>
-                                    </td>
-                                    <td>
-                                        <a href="categories.php?dele=<?php echo  $categoryId?>" class="btn btn-danger btn-sm">
-                                          <span class="glyphicon glyphicon-remove"></span> Delete 
-                                        </a>
-
-                                        <a href="categories.php?update=<?php echo  $categoryId?>" class="btn btn-info btn-sm">
-                                          <span class="glyphicon glyphicon-pencil"></span> Update 
-                                        </a>
-
-                                    </td>
-                                </tr>
-                                <?php 
-                                     }
-                                 ?>
                             </tbody>
 
                         </table>

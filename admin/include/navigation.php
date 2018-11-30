@@ -45,10 +45,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#post"><i class="fa fa-fw fa-arrows-v"></i> Post <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="post" class="collapse">
                             <li>
-                                <a href="#">View all post</a>
+                                <a href="./posts.php?source=view_all_post">View all post</a>
                             </li>
                             <li>
-                                <a href="#">Add new Post</a>
+                                <a href="./posts.php?source=add_post">Add new Post</a>
                             </li>
                         </ul>
                     </li>
@@ -56,7 +56,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#user"><i class="fa fa-fw fa-arrows-v"></i> User <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="user" class="collapse">
                             <li>
-                                <a href="#">View all post</a>
+                                <a href="">View all post</a>
                             </li>
                             <li>
                                 <a href="#">Add new Post</a>
