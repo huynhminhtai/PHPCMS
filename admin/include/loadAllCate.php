@@ -5,7 +5,7 @@
                                 while ($row = mysqli_fetch_assoc($allCategories)) {
                                     $count ++;
                                     $categoryName = $row['name'];
-                                    $categoryId = $row['id'];
+                                    $categoryId = $row['categoryId'];
                                     
                                
                                 ?>

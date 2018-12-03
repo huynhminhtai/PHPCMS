@@ -14,22 +14,39 @@
 
                 <!-- Page Heading -->
                 <div class="row">
+                	<?php 
+                                if (isset($_GET['dele'])) {
+                                    $delete_id = $_GET['dele'];
+                                    $delete_query = "delete from posts where id = '{$delete_id}'";
+                                    $deleteEx = mysqli_query($connection, $delete_query);
+                                }
+                               
+                                 ?>
                    
                         <?php 
                         if(isset($_GET['source'])){
                         	$source = $_GET['source'];
-                        	switch ($source) {
+                        } else{
+                        	$source = "";
+                        }
+                        switch ($source) {
                         		case 'view_all_post':
                         			include "include/showAllPost.php";
                         			break;
-                        		case 'add_post':
-                        		include "include/addPost.php";
-                        			break;
-                        	}
-                        }
-                        if(isset($_GET['dele'])){
 
-                        }
+                        		case 'add_post':
+                        		    include "include/addPost.php";
+                        			break;
+
+                        		case 'update':
+                        		    include "include/editPost.php";
+                        			break;
+                                    
+                        		default:
+                        			include "include/showAllPost.php";
+                        			break;
+
+                        	}
                         ?>
                          
                         

@@ -27,7 +27,23 @@ if(isset($_POST['addPost'])){
 
 	<div class="form-group">
 		<label>Category</label>
-		<input type="text" name="category" class="form-control">
+		<!-- <input type="text" name="category" class="form-control"> -->
+		<select name="category" >
+			<?php 
+			$query = "select * from categories";
+			$allCategories = mysqli_query($connection, $query);
+			$count = 0;
+			while ($row = mysqli_fetch_assoc($allCategories)) {
+				$count ++;
+				$categoryName = $row['name'];
+				$categoryId = $row['categoryId'];
+				echo "<option value='$categoryId'>$categoryName</option>";
+                                }
+			 ?>
+			 
+			 	
+		</select>
+
 	</div>
 	
 	<div class="form-group">

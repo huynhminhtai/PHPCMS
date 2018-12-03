@@ -18,13 +18,28 @@
                         	</thead>
                         	<tbody>
                         		<!-- show all post -->
+                                
+
                         		<?php 
+                                
+                                $query = "select * from categories";
+                                $allCategories = mysqli_query($connection, $query);
+                                $arrayCategories;
+                                while ($row = mysqli_fetch_assoc($allCategories)) {
+                                    $categoryName = $row['name'];
+                                    $categoryId = $row['categoryId'];
+                                    $arrayCategories[$categoryId] = $categoryName;
+                                }
+
                         		$query = "select * from posts";
 				                $allPost = mysqli_query($connection, $query);
 				                $count = 0;
 				                while ($post = mysqli_fetch_assoc($allPost)) {
+
 				                	$count++;
+                                    $post_id = $post['postId'];
 				                    $title = $post['title'];
+                                    $categoryId = $post['categoryId'];
 				                    $author = $post['author'];
 				                    $createDate = $post['createDate'];
 				                    $image = $post['image'];
@@ -34,18 +49,18 @@
                         		?>
                         		<tr>
                         			<td><?php echo  $count ?></td>
-                        			<td>Category</td>
+                        			<td><?php echo  $arrayCategories[$categoryId]; ?></td>
                         			<td><?php echo  $title ?></td>
                         			<td><?php echo  $author ?></td>
                         			<td><?php echo  $createDate ?></td>
-                        			<td class=" col-xs-4"><?php echo  $content ?></td>
+                        			<td class="content col-xs-4"><?php echo  $content ?></td>
                         			<td><?php echo  $status ?></td>
                         			<td>
-                        				<a href="posts.php?dele=<?php echo  $categoryId?>" class="btn btn-danger btn-sm">
+                        				<a href="posts.php?dele=<?php echo  $post_id ?>" class="btn btn-danger btn-sm">
                                           <span class="glyphicon glyphicon-remove"></span> Delete 
                                         </a>
                                     <p></p>
-                                        <a href="categories.php?update=<?php echo  $categoryId?>" class="btn btn-info btn-sm">
+                                        <a href="posts.php?source=update&edit_id=<?php echo $post_id ?>" class="btn btn-info btn-sm">
                                           <span class="glyphicon glyphicon-pencil"></span> Update 
                                         </a>
                         			</td>
