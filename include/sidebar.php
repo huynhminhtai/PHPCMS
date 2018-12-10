@@ -17,7 +17,21 @@
         </div>
 
     </form>
-
+    <form action="include/login.php" method="POST">
+    <div class="well">
+            <h4>Login</h4>
+            <div class="form-group">
+                <input name="username" type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <input name="password" type="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default" name="login_btn" type="submit"> Login</button>
+            </div>
+            <!-- /.input-group -->
+        </div>
+</form>
     <!-- Blog Categories Well -->
     <div class="well">
         <h4>Blog Categories</h4>
@@ -28,12 +42,13 @@
                     $query = "select * from categories";
                     $allCategories = mysqli_query($connection, $query);
                     while ( $row = mysqli_fetch_assoc($allCategories)) {
+                        $category_id = $row['categoryId'];
                         $category = $row['name'];
 
                         ?>
 
 
-                        <li><a href="#"><?php echo $category ?></a>
+                        <li><a href="category.php?category_id=<?php echo $category_id ?>"><?php echo $category ?></a>
 
 
                             <?php 

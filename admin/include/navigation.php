@@ -16,7 +16,8 @@
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> HOME</a>
                     </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php 
+                    echo $_SESSION['username'] ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -53,15 +54,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#user"><i class="fa fa-fw fa-arrows-v"></i> User <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="user" class="collapse">
-                            <li>
-                                <a href="">View all post</a>
-                            </li>
-                            <li>
-                                <a href="#">Add new Post</a>
-                            </li>
-                        </ul>
+                        <a href="./users.php?source=view_all_user" ><i class="glyphicon glyphicon-user"></i>  User </a>
                     </li>
                     <li >
                         <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Comment</a>

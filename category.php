@@ -20,7 +20,8 @@
                 </h1>
 
                 <?php 
-                $query = "select * from posts";
+                $category_id = $_GET['category_id'];
+                $query = "select * from posts where categoryId = $category_id";
                 $allPost = mysqli_query($connection, $query);
                 while ($post = mysqli_fetch_assoc($allPost)) {
                     $post_id= $post['postId'];

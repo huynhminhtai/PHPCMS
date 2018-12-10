@@ -3,7 +3,7 @@
                             Post 
                             <small>All Posts</small>
                         </h1>
-<table class="table table-bordered table-hover">
+                            <table class="table table-bordered table-hover">
                         	<thead>
                         		<tr>
                         			<td>No</td>
@@ -11,7 +11,6 @@
                         			<td>Title</td>
                         			<td>Author</td>
                         			<td>Create date</td>
-                        			<td>content</td>
                         			<td>Status</td>
                         			<td>Action</td>
                         		</tr>
@@ -43,7 +42,6 @@
 				                    $author = $post['author'];
 				                    $createDate = $post['createDate'];
 				                    $image = $post['image'];
-				                    $content = $post['content'];
 				                    $status = $post['status'];
 
                         		?>
@@ -53,7 +51,6 @@
                         			<td><?php echo  $title ?></td>
                         			<td><?php echo  $author ?></td>
                         			<td><?php echo  $createDate ?></td>
-                        			<td class="content col-xs-4"><?php echo  $content ?></td>
                         			<td><?php echo  $status ?></td>
                         			<td>
                         				<a href="posts.php?dele=<?php echo  $post_id ?>" class="btn btn-danger btn-sm">

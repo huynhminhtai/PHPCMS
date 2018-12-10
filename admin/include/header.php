@@ -1,9 +1,15 @@
+
 <?php ob_start(); ?>
+<?php session_start(); ?>
 <?php include "../include/db.php" ?>
 <?php 
 $display_updateDiv = "none";
+if (!isset($_SESSION['username'])) {
+    header("Location: ../index.php");
+}
 
  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,11 +21,11 @@ $display_updateDiv = "none";
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title><?php echo $_SESSION['username']; ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/myStyle.css" rel="stylesheet" type="text/css">
+
 
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
